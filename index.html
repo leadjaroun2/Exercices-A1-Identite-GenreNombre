@@ -3,558 +3,405 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A1 Genre et nombre - Les Noms</title>
+    <title>Exercices : Genre et Nombre (Noms)</title>
     <style>
         :root {
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --primary: #4f46e5;
-            --primary-light: #e0e7ff;
-            --accent-masc: #0284c7;
-            --accent-masc-light: #e0f2fe;
-            --accent-fem: #db2777;
-            --accent-fem-light: #fce7f3;
-            --success: #16a34a;
-            --success-light: #dcfce7;
-            --border: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-            --radius: 12px;
+            --bg-dark: #0b0f19;
+            --card-dark: #131a26;
+            --text-light: #ffffff;
+            --text-muted: #94a3b8;
+            --accent-gradient: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            --btn-hover: #1e293b;
+            --correct-glow: rgba(34, 197, 94, 0.2);
+            --correct-border: #22c55e;
+            --wrong-glow: rgba(239, 68, 68, 0.2);
+            --wrong-border: #ef4444;
+            --border-color: #243242;
+            --radius: 16px;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            line-height: 1.6;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Header Style */
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
-
-        header h1 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        header p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        /* Navigation tabs */
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 12px;
-            border: 1px solid var(--border);
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--text-secondary);
-            transition: all 0.2s ease;
-            box-shadow: var(--shadow);
-        }
-
-        .tab-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        /* Content Blocks */
-        .content-section {
-            display: none;
-        }
-
-        .content-section.active {
-            display: block;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            margin-bottom: 25px;
-        }
-
-        h2 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--primary-light);
-            color: var(--text-primary);
-        }
-
-        h3 {
-            font-size: 1.1rem;
-            margin: 15px 0 10px 0;
-            color: var(--primary);
-        }
-
-        p {
-            margin-bottom: 12px;
-            color: var(--text-primary);
-        }
-
-        /* Gender Pills */
-        .gender-container {
-            display: flex;
-            gap: 15px;
-            margin: 15px 0;
-        }
-
-        .gender-box {
-            flex: 1;
-            padding: 15px;
-            border-radius: var(--radius);
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .masculine {
-            background: var(--accent-masc-light);
-            color: var(--accent-masc);
-            border: 1px solid #bae6fd;
-        }
-
-        .feminine {
-            background: var(--accent-fem-light);
-            color: var(--accent-fem);
-            border: 1px solid #fbcfe8;
-        }
-
-        /* Grammar Tables */
-        table {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
+            max-width: 650px;
+        }
+
+        .main-card {
+            background-color: var(--card-dark);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Ligne de dégradé supérieure style "Designer" */
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-gradient);
+        }
+
+        .header-zone {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .badge-title {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
             font-size: 0.95rem;
         }
 
-        th, td {
-            border: 1px solid var(--border);
-            padding: 12px;
-            text-align: left;
+        .progress-bar {
+            background-color: #1e293b;
+            height: 6px;
+            border-radius: 3px;
+            margin-bottom: 30px;
+            overflow: hidden;
         }
 
-        th {
-            background-color: var(--bg-color);
-            color: var(--text-secondary);
+        .progress-fill {
+            height: 100%;
+            background: var(--accent-gradient);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .question-box {
+            margin-bottom: 30px;
+        }
+
+        .question-txt {
+            font-size: 1.3rem;
             font-weight: 600;
+            line-height: 1.4;
         }
 
-        tr:nth-child(even) {
-            background-color: #f8fafc;
-        }
-
-        /* Quiz styles */
-        .quiz-progress {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-            text-align: right;
-        }
-
-        .question-block {
-            margin-bottom: 20px;
-        }
-
-        .question-text {
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .translation-hint {
-            display: block;
+        .translate-trigger {
+            display: inline-block;
+            color: var(--text-muted);
             font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-top: 4px;
+            margin-top: 8px;
             cursor: pointer;
             text-decoration: underline dotted;
-            user-select: none;
+            transition: color 0.2s;
         }
 
-        .translation-hint:hover {
-            color: var(--primary);
+        .translate-trigger:hover {
+            color: #a855f7;
         }
 
-        .options-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
         }
 
-        .option-btn {
-            padding: 14px;
-            text-align: left;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
+        .opt-btn {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
             border-radius: var(--radius);
+            padding: 18px 24px;
+            text-align: left;
+            color: var(--text-light);
+            font-size: 1.05rem;
             cursor: pointer;
-            font-size: 1rem;
             transition: all 0.2s ease;
             display: flex;
             flex-direction: column;
         }
 
-        .option-btn:hover:not(:disabled) {
-            background: var(--bg-color);
-            border-color: var(--text-secondary);
+        .opt-btn:hover:not(:disabled) {
+            background-color: var(--btn-hover);
+            border-color: #475569;
         }
 
-        .option-btn.correct {
-            background: var(--success-light);
-            border-color: var(--success);
-            color: #15803d;
-            font-weight: 600;
+        .opt-btn.correct {
+            border-color: var(--correct-border);
+            background-color: var(--correct-glow);
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.1);
         }
 
-        .option-btn.wrong {
-            background: #fee2e2;
-            border-color: #ef4444;
-            color: #b91c1c;
+        .opt-btn.wrong {
+            border-color: var(--wrong-border);
+            background-color: var(--wrong-glow);
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.1);
         }
 
-        .option-en {
+        .opt-en-txt {
             font-size: 0.85rem;
-            color: #64748b;
+            color: var(--text-muted);
             font-style: italic;
-            margin-top: 2px;
+            margin-top: 4px;
             display: none;
         }
 
-        .feedback {
-            margin-top: 20px;
-            padding: 15px;
+        .feedback-panel {
+            margin-top: 25px;
+            padding: 20px;
             border-radius: var(--radius);
+            font-size: 0.95rem;
             display: none;
-            font-weight: 500;
+            line-height: 1.5;
         }
 
-        .feedback.show {
+        .feedback-panel.visible {
             display: block;
         }
 
-        .next-btn {
-            display: block;
+        .action-btn {
             width: 100%;
-            padding: 14px;
-            background: var(--primary);
-            color: white;
-            border: none;
+            padding: 16px;
             border-radius: var(--radius);
+            border: none;
+            background: var(--accent-gradient);
+            color: var(--text-light);
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 25px;
             transition: opacity 0.2s;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
         }
 
-        .next-btn:hover {
+        .action-btn:hover {
             opacity: 0.9;
         }
 
-        /* Results Screen */
-        .results-card {
-            text-align: center;
-            padding: 40px 20px;
+        /* Vue Résultats */
+        .score-box {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 20px 0;
         }
 
-        .score-circle {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: var(--primary-light);
-            color: var(--primary);
-            font-size: 2rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px auto;
+        .comment-box {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <header>
-        <h1>A1 : Genre et nombre des Noms</h1>
-        <p>Maîtrisez le masculin, le féminin et le pluriel des objets et des êtres vivants.</p>
-    </header>
-
-    <div class="tabs">
-        <button class="tab-btn active" onclick="switchTab('lecon')">📖 Leçon</button>
-        <button class="tab-btn" onclick="switchTab('quiz')">🎯 Exercices</button>
-    </div>
-
-    <div id="lecon-section" class="content-section active">
-        <div class="card">
-            <h2>Le Genre (Gender)</h2>
-            <p>En français, chaque nom a un genre fixe s'il s'agit d'un objet ou d'une chose. Le genre neutre n'existe pas.</p>
-            
-            <div class="gender-container">
-                <div class="gender-box masculine">Un / Le <br><small>Masculin (ex: un café)</small></div>
-                <div class="gender-box feminine">Une / La <br><small>Féminin (ex: une pomme)</small></div>
-            </div>
-
-            <h3>Règle pour les êtres vivants :</h3>
-            <p>Le genre des personnes et des animaux s'adapte naturellement à leur sexe biologique :</p>
-            <ul>
-                <li>Un chat 🐱 (mâle) → Une chatte 🐱 (femelle)</li>
-                <li>Un étudiant 👨‍🎓 (homme) → Une étudiante 👩‍🎓 (femme)</li>
-                <li>Un Français 🇫🇷 (homme) → Une Française 🇫🇷 (femme)</li>
-            </ul>
+    <div class="main-card" id="app-card">
+        <div class="header-zone">
+            <span class="badge-title">Module A1 — Noms uniquement</span>
+            <h1>Genre et Nombre</h1>
+            <p class="subtitle" id="progress-text">Question 1 sur 10</p>
         </div>
 
-        <div class="card">
-            <h2>Le Nombre (Number)</h2>
-            <p>Il existe quatre règles principales pour transformer un nom singulier au pluriel :</p>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th>Terminaison (Singulier)</th>
-                        <th>Règle Pluriel</th>
-                        <th>Exemple Singulier</th>
-                        <th>Exemple Pluriel</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Cas général</strong></td>
-                        <td>Ajouter un <strong>-s</strong> <small>(muet)</small></td>
-                        <td>une pomme / un café</td>
-                        <td>des pomme<strong>s</strong> / des café<strong>s</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Termine par <strong>-s, -x, -z</strong></td>
-                        <td><strong>Invariable</strong> (ne change pas)</td>
-                        <td>un bus / un prix / un nez</td>
-                        <td>des bus / des prix / des nez</td>
-                    </tr>
-                    <tr>
-                        <td>Termine par <strong>-eau, -au</strong></td>
-                        <td>Ajouter un <strong>-x</strong></td>
-                        <td>un gâteau / une eau</td>
-                        <td>des gâteau<strong>x</strong> / des eau<strong>x</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Termine par <strong>-al</strong></td>
-                        <td>Devient <strong>-aux</strong> <small>(le son change)</small></td>
-                        <td>un animal / un journal</td>
-                        <td>des anim<strong>aux</strong> / des journ<strong>aux</strong></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="progress-bar">
+            <div class="progress-fill" id="bar-fill"></div>
         </div>
-    </div>
 
-    <div id="quiz-section" class="content-section">
-        <div class="card" id="quiz-card">
-            <div class="quiz-progress" id="progress">Question 1/10</div>
-            <div class="question-block">
-                <div class="question-text" id="question">Chargement...</div>
-                <span class="translation-hint" id="question-tr-btn" onclick="toggleQuestionTranslation()">👁️ Afficher la traduction</span>
-            </div>
-            <div class="options-grid" id="options"></div>
-            <div class="feedback" id="feedback"></div>
-            <button class="next-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">Continuer</button>
+        <div class="question-box">
+            <div class="question-txt" id="q-text">Chargement de l'exercice...</div>
+            <span class="translate-trigger" id="q-tr-trigger" onclick="toggleQTranslation()">Voir la traduction anglaise</span>
         </div>
+
+        <div class="options-list" id="options-block"></div>
+        <div class="feedback-panel" id="feedback-block"></div>
+        
+        <button class="action-btn" id="submit-next-btn" onclick="handleAction()" style="display: none;">Continuer</button>
     </div>
 </div>
 
 <script>
-    // Banque complète de 20 questions avec traductions anglaises incluses
-    const fullQuestionsBank = [
-        { question: "Quel est le pluriel correct du nom 'une pomme' ?", questionEn: "What is the correct plural form of the noun 'une pomme' (an apple)?", options: ["des pommes", "des pommex", "des pomme"], optionsEn: ["apples", "apples (incorrect form)", "apples (incorrect form)"], correct: 0, explain: "Règle générale : on ajoute un -s muet au pluriel." },
+    const questionsBank = [
+        { question: "Quel est le pluriel correct du nom 'une pomme' ?", questionEn: "What is the correct plural form of the noun 'une pomme' (an apple)?", options: ["des pommes", "des pommex", "des pomme"], optionsEn: ["apples", "incorrect form", "incorrect form"], correct: 0, explain: "Règle générale : on ajoute un -s muet au pluriel." },
         { question: "Sélectionnez le genre correct du nom 'café' :", questionEn: "Select the correct gender for the noun 'café' (coffee):", options: ["Féminin (une café)", "Masculin (un café)"], optionsEn: ["Feminine", "Masculine"], correct: 1, explain: "Le café est un nom masculin." },
-        { question: "Quel est le pluriel correct du nom 'un gâteau' ?", questionEn: "What is the correct plural form of the noun 'un gâteau' (a cake)?", options: ["des gâteaus", "des gâteau", "des gâteaux"], optionsEn: ["cakes (incorrect)", "cakes (incorrect)", "cakes"], correct: 2, explain: "Les noms se terminant par -eau prennent un -x au pluriel." },
-        { question: "Quel est le pluriel du nom 'un animal' ?", questionEn: "What is the plural of the noun 'un animal' (an animal)?", options: ["des animals", "des animaux", "des animauxs"], optionsEn: ["animals (incorrect)", "animals", "animals (incorrect)"], correct: 1, explain: "Les noms se terminant par -al se transforment en -aux au pluriel." },
-        { question: "Le nom 'un prix' se termine par -x. Quel est son pluriel ?", questionEn: "The noun 'un prix' (a price) ends with -x. What is its plural form?", options: ["des prix", "des prixes", "des prixs"], optionsEn: ["prices", "prices (incorrect)", "prices (incorrect)"], correct: 0, explain: "Les noms terminant par -s, -x, ou -z restent invariables au pluriel." },
-        { question: "Si un étudiant est un homme, comment appelle-t-on une femme qui étudie ?", questionEn: "If 'un étudiant' is a male student, what do we call a female student?", options: ["une étudiant", "une étudiante", "une étudianti"], optionsEn: ["female student (incorrect)", "female student", "female student (incorrect)"], correct: 1, explain: "Pour les êtres vivants de genre féminin, on ajoute souvent un -e à la fin du nom." },
-        { question: "Quel est le pluriel du nom 'un bus' ?", questionEn: "What is the plural form of the noun 'un bus' (a bus)?", options: ["des buss", "des bus", "des busx"], optionsEn: ["buses (incorrect)", "buses", "buses (incorrect)"], correct: 1, explain: "Se terminant déjà par un -s, le mot reste invariable." },
-        { question: "Quel est le pluriel du nom 'un journal' ?", questionEn: "What is the plural form of the noun 'un journal' (a newspaper)?", options: ["des journals", "des journaux"], optionsEn: ["newspapers (incorrect)", "newspapers"], correct: 1, explain: "Le suffixe -al devient -aux au pluriel (un journal -> des journaux)." },
-        { question: "Quel est le genre correct du mot 'bureau' ?", questionEn: "What is the correct gender of the word 'bureau' (desk/office)?", options: ["Masculin (un bureau)", "Féminin (une bureau)"], optionsEn: ["Masculine", "Feminine"], correct: 0, explain: "Le mot 'bureau' est un nom de chose masculin." },
-        { question: "Quelle est la forme plurielle correcte de 'un nez' ?", questionEn: "What is the correct plural form of 'un nez' (a nose)?", options: ["des nezs", "des nez", "des nezx"], optionsEn: ["noses (incorrect)", "noses", "noses (incorrect)"], correct: 1, explain: "Les mots finissant par -z ne changent pas d'orthographe au pluriel." },
-        { question: "Quelle est la forme féminine du nom 'un chat' ?", questionEn: "What is the feminine form of the noun 'un chat' (a male cat)?", options: ["une chate", "une chatte", "une chattes"], optionsEn: ["female cat (incorrect)", "female cat", "female cat (incorrect)"], correct: 1, explain: "Pour le féminin de 'chat', on double la consonne et on ajoute un -e : une chatte." },
-        { question: "Quel est le pluriel du nom 'une eau' ?", questionEn: "What is the plural form of the noun 'une eau' (a water)?", options: ["des eaus", "des eaux", "des eau"], optionsEn: ["waters (incorrect)", "waters", "waters (incorrect)"], correct: 1, explain: "Les noms terminés par -eau ou -au prennent un -x au pluriel." },
+        { question: "Quel est le pluriel correct du nom 'un gâteau' ?", questionEn: "What is the correct plural form of the noun 'un gâteau' (a cake)?", options: ["des gâteaus", "des gâteau", "des gâteaux"], optionsEn: ["incorrect", "incorrect", "cakes"], correct: 2, explain: "Les noms se terminant par -eau prennent un -x au pluriel." },
+        { question: "Quel est le pluriel du nom 'un animal' ?", questionEn: "What is the plural of the noun 'un animal' (an animal)?", options: ["des animals", "des animaux", "des animauxs"], optionsEn: ["incorrect", "animals", "incorrect"], correct: 1, explain: "Les noms se terminant par -al se transforment en -aux au pluriel." },
+        { question: "Le nom 'un prix' se termine par -x. Quel est son pluriel ?", questionEn: "The noun 'un prix' (a price) ends with -x. What is its plural form?", options: ["des prix", "des prixes", "des prixs"], optionsEn: ["prices", "incorrect", "incorrect"], correct: 0, explain: "Les noms terminant par -s, -x, ou -z restent invariables au pluriel." },
+        { question: "Si un étudiant est un homme, comment appelle-t-on une femme qui étudie ?", questionEn: "If 'un étudiant' is a male student, what do we call a female student?", options: ["une étudiant", "une étudiante", "une étudianti"], optionsEn: ["incorrect", "female student", "incorrect"], correct: 1, explain: "Pour les êtres vivants de genre féminin, on ajoute un -e à la fin du nom de base." },
+        { question: "Quel est le pluriel du nom 'un bus' ?", questionEn: "What is the plural form of the noun 'un bus' (a bus)?", options: ["des buss", "des bus", "des busx"], optionsEn: ["incorrect", "buses", "incorrect"], correct: 1, explain: "Se terminant déjà par un -s, le mot reste invariable." },
+        { question: "Quel est le pluriel du nom 'un journal' ?", questionEn: "What is the plural form of the noun 'un journal' (a newspaper)?", options: ["des journals", "des journaux"], optionsEn: ["incorrect", "newspapers"], correct: 1, explain: "Le suffixe -al devient -aux au pluriel." },
+        { question: "Quel est le genre correct du mot 'bureau' ?", questionEn: "What is the correct gender of the word 'bureau' (desk/office)?", options: ["Masculin (un bureau)", "Féminin (une bureau)"], optionsEn: ["Masculine", "Feminine"], correct: 0, explain: "Le mot 'bureau' est un nom d'objet masculin." },
+        { question: "Quelle est la forme plurielle correcte de 'un nez' ?", questionEn: "What is the correct plural form of 'un nez' (a nose)?", options: ["des nezs", "des nez", "des nezx"], optionsEn: ["incorrect", "noses", "incorrect"], correct: 1, explain: "Les mots finissant par -z ne changent pas au pluriel." },
+        { question: "Quelle est la forme féminine du nom 'un chat' ?", questionEn: "What is the feminine form of the noun 'un chat' (a male cat)?", options: ["une chate", "une chatte", "une chattes"], optionsEn: ["incorrect", "female cat", "incorrect"], correct: 1, explain: "Pour le féminin de 'chat', on double la consonne et on ajoute un -e." },
+        { question: "Quel est le pluriel du nom 'une eau' ?", questionEn: "What is the plural form of the noun 'une eau' (a water)?", options: ["des eaus", "des eaux", "des eau"], optionsEn: ["incorrect", "waters", "incorrect"], correct: 1, explain: "Les noms terminés par -eau ou -au prennent un -x au pluriel." },
         { question: "Quel est le genre correct du nom 'table' ?", questionEn: "What is the correct gender of the noun 'table' (a table)?", options: ["Masculin (un table)", "Féminin (une table)"], optionsEn: ["Masculine", "Feminine"], correct: 1, explain: "'Table' est un nom d'objet féminin." },
-        { question: "Quelle est la forme féminine du nom 'un Français' ?", questionEn: "What is the feminine form of the noun 'un Français' (a Frenchman)?", options: ["une Française", "une Francaise", "une Français"], optionsEn: ["Frenchwoman", "Frenchwoman (missing accent)", "Frenchwoman (incorrect)"], correct: 0, explain: "Le féminin du nom d'habitant 'Français' s'écrit 'Française' (avec un -e et la cédille)." },
-        { question: "Quel est le pluriel du nom 'un stylo' ?", questionEn: "What is the plural of the noun 'un stylo' (a pen)?", options: ["des stylox", "des stylos", "des stylo"], optionsEn: ["pens (incorrect)", "pens", "pens (incorrect)"], correct: 1, explain: "Règle générale : on ajoute un -s pour le pluriel." },
+        { question: "Quelle est la forme féminine du nom 'un Français' ?", questionEn: "What is the feminine form of the noun 'un Français' (a Frenchman)?", options: ["une Française", "une Francaise", "une Français"], optionsEn: ["Frenchwoman", "missing accent", "incorrect"], correct: 0, explain: "Le féminin du nom d'habitant 'Français' s'écrit 'Française' (avec un -e et la cédille)." },
+        { question: "Quel est le pluriel du nom 'un stylo' ?", questionEn: "What is the plural of the noun 'un stylo' (a pen)?", options: ["des stylox", "des stylos", "des stylo"], optionsEn: ["incorrect", "pens", "incorrect"], correct: 1, explain: "Règle générale : on ajoute un -s pour le pluriel." },
         { question: "Quel est le genre correct du nom 'voiture' ?", questionEn: "What is the correct gender of the noun 'voiture' (a car)?", options: ["Masculin (un voiture)", "Féminin (une voiture)"], optionsEn: ["Masculine", "Feminine"], correct: 1, explain: "'Voiture' est un nom d'objet féminin." },
-        { question: "Quel est le pluriel du nom 'un oiseau' ?", questionEn: "What is the plural of the noun 'un oiseau' (a bird)?", options: ["des oiseaus", "des oiseaux"], optionsEn: ["birds (incorrect)", "birds"], correct: 1, explain: "Les noms finissant par -eau prennent un -x au pluriel." },
-        { question: "Quelle est la forme féminine du nom 'un ami' ?", questionEn: "What is the feminine form of the noun 'un ami' (a male friend)?", options: ["une amis", "une amie", "une ami"], optionsEn: ["female friend (incorrect)", "female friend", "female friend (incorrect)"], correct: 1, explain: "On ajoute généralement un -e au singulier pour obtenir le féminin." },
-        { question: "Quel est le pluriel du nom 'un pays' ?", questionEn: "What is the plural of the noun 'un pays' (a country)?", options: ["des pays", "des payss", "des payx"], optionsEn: ["countries", "countries (incorrect)", "countries (incorrect)"], correct: 0, explain: "Comme le mot se termine déjà par un -s, il ne change pas au pluriel." },
+        { question: "Quel est le pluriel du nom 'un oiseau' ?", questionEn: "What is the plural of the noun 'un oiseau' (a bird)?", options: ["des oiseaus", "des oiseaux"], optionsEn: ["incorrect", "birds"], correct: 1, explain: "Les noms finissant par -eau prennent un -x au pluriel." },
+        { question: "Quelle est la forme féminine du nom 'un ami' ?", questionEn: "What is the feminine form of the noun 'un ami' (a male friend)?", options: ["une amis", "une amie", "une ami"], optionsEn: ["incorrect", "female friend", "incorrect"], correct: 1, explain: "On ajoute généralement un -e au singulier pour obtenir le féminin." },
+        { question: "Quel est le pluriel du nom 'un pays' ?", questionEn: "What is the plural of the noun 'un pays' (a country)?", options: ["des pays", "des payss", "des payx"], optionsEn: ["countries", "incorrect", "incorrect"], correct: 0, explain: "Comme le mot se termine déjà par un -s, il ne change pas au pluriel." },
         { question: "Quel est le genre correct du nom 'livre' ?", questionEn: "What is the correct gender of the noun 'livre' (a book)?", options: ["Masculin (un livre)", "Féminin (une livre)"], optionsEn: ["Masculine", "Feminine"], correct: 0, explain: "Dans le sens de l'objet de lecture, 'livre' est un nom masculin." }
     ];
 
-    let quizData = [];
+    let currentSessionQuestions = [];
     let currentQuestionIdx = 0;
     let score = 0;
     let hasAnswered = false;
-    let showQuestionTr = false;
+    let isTranslationVisible = false;
 
-    function switchTab(tabId) {
-        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
-        
-        if(tabId === 'lecon') {
-            document.querySelectorAll('.tab-btn')[0].classList.add('active');
-            document.getElementById('lecon-section').classList.add('active');
-        } else {
-            document.querySelectorAll('.tab-btn')[1].classList.add('active');
-            document.getElementById('quiz-section').classList.add('active');
-            initQuiz();
-        }
-    }
-
-    function initQuiz() {
-        const shuffled = [...fullQuestionsBank].sort(() => 0.5 - Math.random());
-        quizData = shuffled.slice(0, 10);
+    function initSession() {
+        const shuffled = [...questionsBank].sort(() => 0.5 - Math.random());
+        currentSessionQuestions = shuffled.slice(0, 10);
         currentQuestionIdx = 0;
         score = 0;
-        showQuestion();
+        loadQuestion();
     }
 
-    function showQuestion() {
+    function loadQuestion() {
         hasAnswered = false;
-        showQuestionTr = false;
+        isTranslationVisible = false;
         
-        const card = document.getElementById('quiz-card');
-        card.innerHTML = `
-            <div class="quiz-progress" id="progress">Question ${currentQuestionIdx + 1}/10</div>
-            <div class="question-block">
-                <div class="question-text" id="question"></div>
-                <span class="translation-hint" id="question-tr-btn" onclick="toggleQuestionTranslation()">👁️ English translation</span>
-            </div>
-            <div class="options-grid" id="options"></div>
-            <div class="feedback" id="feedback"></div>
-            <button class="next-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">Continuer</button>
-        `;
+        const currentQ = currentSessionQuestions[currentQuestionIdx];
+        
+        // Updates UI Progress
+        document.getElementById('progress-text').innerText = `Question ${currentQuestionIdx + 1} sur 10`;
+        const percentage = (currentQuestionIdx / 10) * 100;
+        document.getElementById('bar-fill').style.width = percentage + '%';
 
-        const q = quizData[currentQuestionIdx];
-        document.getElementById('question').innerText = q.question;
+        // Question block
+        document.getElementById('q-text').innerText = currentQ.question;
+        document.getElementById('q-tr-trigger').innerText = "Voir la traduction anglaise";
         
-        const optionsDiv = document.getElementById('options');
-        q.options.forEach((opt, idx) => {
+        // Clear & Load Options
+        const optionsBlock = document.getElementById('options-block');
+        optionsBlock.innerHTML = '';
+        
+        const feedbackBlock = document.getElementById('feedback-block');
+        feedbackBlock.className = "feedback-panel";
+        feedbackBlock.innerHTML = "";
+        
+        document.getElementById('submit-next-btn').style.display = "none";
+
+        currentQ.options.forEach((opt, idx) => {
             const btn = document.createElement('button');
-            btn.className = 'option-btn';
-            
-            // Structure avec le texte français principal et la traduction masquée au début
+            btn.className = 'opt-btn';
             btn.innerHTML = `
                 <span>${opt}</span>
-                <span class="option-en" id="opt-en-${idx}">${q.optionsEn[idx]}</span>
+                <span class="opt-en-txt" id="en-opt-${idx}">${currentQ.optionsEn[idx]}</span>
             `;
-            
-            btn.onclick = () => checkAnswer(idx, btn);
-            optionsDiv.appendChild(btn);
+            btn.onclick = () => selectAnswer(idx, btn);
+            optionsBlock.appendChild(btn);
         });
     }
 
-    function toggleQuestionTranslation() {
-        const q = quizData[currentQuestionIdx];
-        const btn = document.getElementById('question-tr-btn');
-        showQuestionTr = !showQuestionTr;
+    function toggleQTranslation() {
+        const currentQ = currentSessionQuestions[currentQuestionIdx];
+        const trigger = document.getElementById('q-tr-trigger');
+        isTranslationVisible = !isTranslationVisible;
         
-        if (showQuestionTr) {
-            document.getElementById('question').innerText = `${q.question} (${q.questionEn})`;
-            btn.innerText = "🙈 Masquer la traduction";
+        if (isTranslationVisible) {
+            document.getElementById('q-text').innerText = `${currentQ.question} (${currentQ.questionEn})`;
+            trigger.innerText = "Masquer la traduction";
         } else {
-            document.getElementById('question').innerText = q.question;
-            btn.innerText = "👁️ English translation";
+            document.getElementById('q-text').innerText = currentQ.question;
+            trigger.innerText = "Voir la traduction anglaise";
         }
     }
 
-    function checkAnswer(selectedIdx, btnElement) {
+    function selectAnswer(selectedIdx, btnElement) {
         if (hasAnswered) return;
         hasAnswered = true;
 
-        const q = quizData[currentQuestionIdx];
-        const feedbackDiv = document.getElementById('feedback');
-        const nextBtn = document.getElementById('next-btn');
-        const allButtons = document.querySelectorAll('.option-btn');
+        const currentQ = currentSessionQuestions[currentQuestionIdx];
+        const feedbackBlock = document.getElementById('feedback-block');
+        const nextBtn = document.getElementById('submit-next-btn');
+        const allButtons = document.querySelectorAll('.opt-btn');
 
         allButtons.forEach(btn => btn.disabled = true);
-        
-        // Affiche la traduction de toutes les options après avoir répondu
-        document.querySelectorAll('.option-en').forEach(el => el.style.display = 'block');
+        document.querySelectorAll('.opt-en-txt').forEach(el => el.style.display = 'block');
 
-        if (selectedIdx === q.correct) {
+        if (selectedIdx === currentQ.correct) {
             btnElement.classList.add('correct');
-            feedbackDiv.className = "feedback show";
-            feedbackDiv.style.background = "var(--success-light)";
-            feedbackDiv.style.color = "#15803d";
-            feedbackDiv.innerHTML = `✨ <strong>Correct !</strong> ${q.explain}`;
+            feedbackBlock.style.backgroundColor = "var(--correct-glow)";
+            feedbackBlock.style.border = "1px solid var(--correct-border)";
+            feedbackBlock.innerHTML = `✨ <strong>Correct !</strong> ${currentQ.explain}`;
             score++;
         } else {
             btnElement.classList.add('wrong');
-            allButtons[q.correct].classList.add('correct');
-            feedbackDiv.className = "feedback show";
-            feedbackDiv.style.background = "#fee2e2";
-            feedbackDiv.style.color = "#b91c1c";
-            feedbackDiv.innerHTML = `❌ <strong>Incorrect.</strong> ${q.explain}`;
+            allButtons[currentQ.correct].classList.add('correct');
+            feedbackBlock.style.backgroundColor = "var(--wrong-glow)";
+            feedbackBlock.style.border = "1px solid var(--wrong-border)";
+            feedbackBlock.innerHTML = `❌ <strong>Incorrect.</strong> ${currentQ.explain}`;
         }
-
+        
+        feedbackBlock.classList.add('visible');
         nextBtn.style.display = "block";
     }
 
-    function nextQuestion() {
+    function handleAction() {
         currentQuestionIdx++;
         if (currentQuestionIdx < 10) {
-            showQuestion();
+            loadQuestion();
         } else {
-            showResults();
+            showFinalResults();
         }
     }
 
-    function showResults() {
-        const card = document.getElementById('quiz-card');
-        let message = "";
-        if (score === 10) message = "Parfait ! 10/10 ! Vous maîtrisez les noms à la perfection. 🌟";
-        else if (score >= 7) message = "Très bien ! Les règles de base sont bien comprises. 👍";
-        else message = "Pas de panique ! Relisez la leçon et tentez un nouveau tirage de questions. 📖";
+    function showFinalResults() {
+        document.getElementById('bar-fill').style.width = '100%';
+        document.getElementById('progress-text').innerText = `Session terminée`;
+        
+        const card = document.getElementById('app-card');
+        let commentText = "";
+        
+        if (score === 10) commentText = "Parfait ! Les bases du genre et du nombre sont solides. 🌟";
+        else if (score >= 7) commentText = "Très bien ! Bon niveau d'assimilation des règles. 👍";
+        else commentText = "Continuez d'apprendre ! Révisez les règles de pluriels irréguliers (-eau, -al) et repassez le quiz.";
 
         card.innerHTML = `
-            <div class="results-card">
-                <h2>Exercices Terminés !</h2>
-                <div class="score-circle">${score}/10</div>
-                <p style="font-weight: 600; margin-bottom: 20px;">${message}</p>
-                <button class="next-btn" onclick="initQuiz()">Lancer un autre tirage (10 questions au hasard)</button>
+            <div class="header-zone">
+                <span class="badge-title">Résultats</span>
+                <h1>Votre Score</h1>
+                <div class="score-box">${score}/10</div>
+                <p class="comment-box">${commentText}</p>
+                <button class="action-btn" onclick="window.location.reload()">Recommencer un test (Tirage aléatoire)</button>
             </div>
         `;
     }
+
+    // Lance la session au chargement initial
+    window.onload = initSession;
 </script>
 
 </body>
